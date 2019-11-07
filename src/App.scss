@@ -1,22 +1,56 @@
-.App {
+$footerHeight: 84px;
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  height: 100%;
+  padding-bottom: $footerHeight;
+}
+
+footer {
+  background-color: #f2f2f2;
+  bottom: 0;
+  height: $footerHeight;
   text-align: center;
+  padding-top: 4px;
+  position: absolute;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
+header, .calculator, .assumptions {
+  margin: 0 auto;
+  max-width: 800px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.calculator div {
+  //width: 200px;
+  //height: 50px;
+  display: inline-block;
 }
 
-.App-link {
-  color: #09d3ac;
+.one {
+  background: red;
+  width: calc(100% / 3 * 2);
+}
+
+.two {
+  background: orange;
+  width: calc(100% / 3);
+}
+
+@media screen and (max-width: 531px) {
+  .container {
+    display: flex;
+    flex-flow: column;
+  }
+  .two {
+    order: 1;
+    width: 100%;
+  }
+  .one {
+    order: 2;
+    width: 100%;
+  }
 }
