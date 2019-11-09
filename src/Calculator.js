@@ -1,4 +1,5 @@
 import React from 'react';
+import mortgageJs from 'mortgage-js';
 
 class Calculator extends React.Component {
   constructor(props) {
@@ -16,7 +17,45 @@ class Calculator extends React.Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state);
+  }
+
+  getPaymentRows() {
+    const payment = mortgageJs.calculatePayment(this.state.value, this.state.value-this.state.mortgage, this.state.rate/100, this.state.term);
+    const rows = [];
+    for (let i = 11; i < payment.paymentSchedule.length; i=i+12) {
+      rows.push(payment.paymentSchedule[i]);
+    }
+
+    return rows;
+  }
+
+  renderRows() {
+   const rows = this.getPaymentRows();
+   const newRows = [];
+   for (const [index, value] of rows.entries()) {
+     newRows.push(
+        <tr key={index}>
+          <td>{index+1}</td>
+          <td className="numeric">{value.balance.toFixed(2)}</td>
+          <td className="numeric">{(this.state.value-value.balance).toFixed(2)}</td>
+          <td className="numeric">{value.totalInterest.toFixed(2)}</td>
+          <td className="numeric">{value.totalPayments.toFixed(2)}</td>
+          <td className="numeric">{(100*(this.state.value-value.balance)/this.state.value).toFixed(2)}</td>
+        </tr>
+      );
+    }
+
+    return newRows;
+  }
+
+  renderTableBody() {
+    if (this.state.value && this.state.rate && this.state.mortgage && this.state.term) {
+      return (
+        <tbody>
+        {this.renderRows()}
+        </tbody>
+      );
+    }
   }
 
   render() {
@@ -35,16 +74,7 @@ class Calculator extends React.Component {
                 <th>% Owned</th>
               </tr>
               </thead>
-              <tbody>
-              <tr>
-                <td>0</td>
-                <td>£238800</td>
-                <td>£31700</td>
-                <td>£4700</td>
-                <td>£9600</td>
-                <td>11.7%</td>
-              </tr>
-              </tbody>
+              {this.renderTableBody()}
             </table>
           </div>
           <div className="two">
@@ -58,7 +88,7 @@ class Calculator extends React.Component {
             </div>
             <div>
               <label htmlFor="mortgage">Mortgage Amount</label>
-              <input name="mortgage" type="number" onChange={this.handleInputChange}/>
+              <input name="mortgage" type="number" step="12" onChange={this.handleInputChange}/>
             </div>
             <div>
               <label htmlFor="term">Mortgage Term</label>
@@ -70,25 +100,5 @@ class Calculator extends React.Component {
     );
   }
 }
-
-// {/*<form>*/}
-// {/*    <label>*/}
-// {/*        Is going:*/}
-// {/*        <input*/}
-// {/*            name="isGoing"*/}
-// {/*            type="checkbox"*/}
-// {/*            checked={this.state.isGoing}*/}
-// {/*            onChange={this.handleInputChange} />*/}
-// {/*    </label>*/}
-// {/*    <br />*/}
-// {/*    <label>*/}
-// {/*        Number of guests:*/}
-// {/*        <input*/}
-// {/*            name="numberOfGuests"*/}
-// {/*            type="number"*/}
-// {/*            value={this.state.numberOfGuests}*/}
-// {/*            onChange={this.handleInputChange} />*/}
-// {/*    </label>*/}
-// {/*</form>*/}
 
 export default Calculator;

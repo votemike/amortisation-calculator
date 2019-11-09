@@ -1,4 +1,4 @@
-$footerHeight: 84px;
+$footerHeight: 88px;
 html {
   min-height: 100%;
   position: relative;
@@ -6,7 +6,7 @@ html {
 
 body {
   height: 100%;
-  padding-bottom: $footerHeight;
+  padding-bottom: $footerHeight+10px;
 }
 
 footer {
@@ -22,6 +22,11 @@ footer {
 header, .calculator, .assumptions {
   margin: 0 auto;
   max-width: 800px;
+}
+
+.calculator {
+  display: flex;
+  align-items: stretch;
 }
 
 .calculator div {
@@ -41,8 +46,7 @@ header, .calculator, .assumptions {
 }
 
 @media screen and (max-width: 531px) {
-  .container {
-    display: flex;
+  .calculator {
     flex-flow: column;
   }
   .two {
@@ -53,4 +57,9 @@ header, .calculator, .assumptions {
     order: 2;
     width: 100%;
   }
+}
+
+.numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
