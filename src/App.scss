@@ -27,22 +27,29 @@ header, .calculator, .assumptions {
 .calculator {
   display: flex;
   align-items: stretch;
+  border: 1px solid #D8D8D8;
 }
 
-.calculator div {
-  //width: 200px;
-  //height: 50px;
+.one,
+.two {
+  //Do I even need this?
   display: inline-block;
 }
 
 .one {
-  background: red;
+  padding: 10px;
+  //background: red;
   width: calc(100% / 3 * 2);
 }
 
 .two {
-  background: orange;
+  padding: 10px;
+  //background: orange;
   width: calc(100% / 3);
+
+  > div {
+    margin-bottom: 10px;
+  }
 }
 
 @media screen and (max-width: 531px) {
@@ -62,4 +69,43 @@ header, .calculator, .assumptions {
 .numeric {
   text-align: right;
   font-variant-numeric: tabular-nums;
+}
+
+h2 {
+  border-bottom: 1px solid #D8D8D8;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: inset 0 0 0 1px #B1B1B1;
+  padding: 10px 15px;
+}
+
+table {
+  border-collapse: collapse;
+}
+table td, table th {
+  border: 1px solid #D8D8D8;
+  padding: 8px;
+}
+table tr:first-child th {
+  border-top: 0;
+}
+table tr:last-child td {
+  border-bottom: 0;
+}
+table tr td:first-child,
+table tr th:first-child {
+  border-left: 0;
+}
+table tr td:last-child,
+table tr th:last-child {
+  border-right: 0;
 }

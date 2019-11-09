@@ -78,6 +78,7 @@ class Calculator extends React.Component {
             </table>
           </div>
           <div className="two">
+            <h2>Your Details</h2>
             <div>
               <label htmlFor="value">Home Value</label>
               <input name="value" type="number" onChange={this.handleInputChange}/>
