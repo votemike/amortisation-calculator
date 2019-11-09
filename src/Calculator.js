@@ -1,6 +1,8 @@
 import React from 'react';
 import mortgageJs from 'mortgage-js';
 
+import './Calculator.scss';
+
 class Calculator extends React.Component {
   constructor(props) {
     super(props);
@@ -62,7 +64,7 @@ class Calculator extends React.Component {
     return (
       <>
         <div className="calculator">
-          <div className="one">
+          <div className="results">
             <table>
               <thead>
               <tr>
@@ -77,23 +79,23 @@ class Calculator extends React.Component {
               {this.renderTableBody()}
             </table>
           </div>
-          <div className="two">
+          <div className="details">
             <h2>Your Details</h2>
             <div>
               <label htmlFor="value">Home Value</label>
-              <input name="value" type="number" onChange={this.handleInputChange}/>
+              <input name="value" type="number" min="0" onChange={this.handleInputChange}/>
             </div>
             <div>
               <label htmlFor="rate">Interest Rate</label>
-              <input name="rate" type="number" onChange={this.handleInputChange}/>
+              <input name="rate" type="number" min="0" onChange={this.handleInputChange}/>
             </div>
             <div>
               <label htmlFor="mortgage">Mortgage Amount</label>
-              <input name="mortgage" type="number" step="12" onChange={this.handleInputChange}/>
+              <input name="mortgage" type="number" min="0" onChange={this.handleInputChange}/>
             </div>
             <div>
               <label htmlFor="term">Mortgage Term</label>
-              <input name="term" type="number" onChange={this.handleInputChange}/>
+              <input name="term" type="number" min="0" step="12" onChange={this.handleInputChange}/>
             </div>
           </div>
         </div>
