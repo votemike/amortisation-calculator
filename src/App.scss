@@ -1,22 +1,29 @@
-.App {
+@import 'variables';
+
+.main {
+  margin: 10px 10px 0 10px;
+}
+
+h2 {
+  border-bottom: 1px solid $appColour;
+}
+
+footer {
+  background-color: #f2f2f2;
+  bottom: 0;
+  height: $footerHeight;
   text-align: center;
+  padding-top: 4px;
+  position: absolute;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
+header,
+.assumptions {
+  margin: 0 auto;
+  max-width: 800px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.assumptions {
+  margin-top: 10px;
 }
