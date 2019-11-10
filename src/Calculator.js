@@ -22,7 +22,7 @@ class Calculator extends React.Component {
   }
 
   getPaymentRows() {
-    const payment = mortgageJs.calculatePayment(this.state.value, this.state.value - this.state.mortgage, this.state.rate / 100, this.state.term);
+    const payment = mortgageJs.calculatePayment(this.state.value, this.state.value - this.state.mortgage, this.state.rate / 100, this.state.term * 12);
     const rows = [];
     for (let i = 11; i < payment.paymentSchedule.length; i = i + 12) {
       rows.push(payment.paymentSchedule[i]);
@@ -84,19 +84,19 @@ class Calculator extends React.Component {
           <h2>Your Details</h2>
           <div>
             <label htmlFor="value">Home Value</label>
-            <input type="number" min="0" onChange={this.handleInputChange} name="value" />
+            <input required type="number" min="0" onChange={this.handleInputChange} name="value" placeholder="234853" />
           </div>
           <div>
             <label htmlFor="rate">Interest Rate</label>
-            <input type="number" min="0" onChange={this.handleInputChange} name="rate"/>
+            <input required type="number" min="0" onChange={this.handleInputChange} name="rate" placeholder="4.19" step="any"/>
           </div>
           <div>
             <label htmlFor="mortgage">Mortgage Amount</label>
-            <input type="number" min="0" onChange={this.handleInputChange} name="mortgage"/>
+            <input required type="number" min="0" onChange={this.handleInputChange} name="mortgage" placeholder="176139"/>
           </div>
           <div>
             <label htmlFor="term">Mortgage Term</label>
-            <input type="number" min="0" onChange={this.handleInputChange} name="term" step="12"/>
+            <input required type="number" min="0" onChange={this.handleInputChange} name="term" placeholder="25"/>
           </div>
         </div>
       </div>
