@@ -22,9 +22,9 @@ class Calculator extends React.Component {
   }
 
   getPaymentRows() {
-    const payment = mortgageJs.calculatePayment(this.state.value, this.state.value-this.state.mortgage, this.state.rate/100, this.state.term);
+    const payment = mortgageJs.calculatePayment(this.state.value, this.state.value - this.state.mortgage, this.state.rate / 100, this.state.term);
     const rows = [];
-    for (let i = 11; i < payment.paymentSchedule.length; i=i+12) {
+    for (let i = 11; i < payment.paymentSchedule.length; i = i + 12) {
       rows.push(payment.paymentSchedule[i]);
     }
 
@@ -32,17 +32,17 @@ class Calculator extends React.Component {
   }
 
   renderRows() {
-   const rows = this.getPaymentRows();
-   const newRows = [];
-   for (const [index, value] of rows.entries()) {
-     newRows.push(
+    const rows = this.getPaymentRows();
+    const newRows = [];
+    for (const [index, value] of rows.entries()) {
+      newRows.push(
         <tr key={index}>
-          <td>{index+1}</td>
+          <td>{index + 1}</td>
           <td className="numeric">{value.balance.toFixed(2)}</td>
-          <td className="numeric">{(this.state.value-value.balance).toFixed(2)}</td>
+          <td className="numeric">{(this.state.value - value.balance).toFixed(2)}</td>
           <td className="numeric">{value.totalInterest.toFixed(2)}</td>
           <td className="numeric">{value.totalPayments.toFixed(2)}</td>
-          <td className="numeric">{(100*(this.state.value-value.balance)/this.state.value).toFixed(2)}</td>
+          <td className="numeric">{(100 * (this.state.value - value.balance) / this.state.value).toFixed(2)}</td>
         </tr>
       );
     }
@@ -50,56 +50,56 @@ class Calculator extends React.Component {
     return newRows;
   }
 
-  renderTableBody() {
-    if (this.state.value && this.state.rate && this.state.mortgage && this.state.term) {
-      return (
+  renderResults() {
+    if (!this.state.value || !this.state.rate || !this.state.mortgage || !this.state.term) {
+      return <p>Fill in all the fields in "Your Details" to see your results.</p>
+    }
+
+    return (
+      <table>
+        <thead>
+        <tr>
+          <th>Year</th>
+          <th>Mortgage remaining</th>
+          <th>Value Owned</th>
+          <th>Interest Paid To Date</th>
+          <th>Total Paid</th>
+          <th>% Owned</th>
+        </tr>
+        </thead>
         <tbody>
         {this.renderRows()}
         </tbody>
-      );
-    }
+      </table>
+    );
   }
 
   render() {
     return (
-      <>
-        <div className="calculator">
-          <div className="results">
-            {/*<table>*/}
-            {/*  <thead>*/}
-            {/*  <tr>*/}
-            {/*    <th>Year</th>*/}
-            {/*    <th>Mortgage remaining</th>*/}
-            {/*    <th>Value Owned</th>*/}
-            {/*    <th>Interest Paid To Date</th>*/}
-            {/*    <th>Total Paid</th>*/}
-            {/*    <th>% Owned</th>*/}
-            {/*  </tr>*/}
-            {/*  </thead>*/}
-            {/*  {this.renderTableBody()}*/}
-            {/*</table>*/}
+      <div className="calculator">
+        <div className="results">
+          {this.renderResults()}
+        </div>
+        <div className="details">
+          <h2>Your Details</h2>
+          <div>
+            <label htmlFor="value">Home Value</label>
+            <input name="value" type="number" min="0" onChange={this.handleInputChange}/>
           </div>
-          <div className="details">
-            <h2>Your Details</h2>
-            <div>
-              <label htmlFor="value">Home Value</label>
-              <input name="value" type="number" min="0" onChange={this.handleInputChange}/>
-            </div>
-            <div>
-              <label htmlFor="rate">Interest Rate</label>
-              <input name="rate" type="number" min="0" onChange={this.handleInputChange}/>
-            </div>
-            <div>
-              <label htmlFor="mortgage">Mortgage Amount</label>
-              <input name="mortgage" type="number" min="0" onChange={this.handleInputChange}/>
-            </div>
-            <div>
-              <label htmlFor="term">Mortgage Term</label>
-              <input name="term" type="number" min="0" step="12" onChange={this.handleInputChange}/>
-            </div>
+          <div>
+            <label htmlFor="rate">Interest Rate</label>
+            <input name="rate" type="number" min="0" onChange={this.handleInputChange}/>
+          </div>
+          <div>
+            <label htmlFor="mortgage">Mortgage Amount</label>
+            <input name="mortgage" type="number" min="0" onChange={this.handleInputChange}/>
+          </div>
+          <div>
+            <label htmlFor="term">Mortgage Term</label>
+            <input name="term" type="number" min="0" step="12" onChange={this.handleInputChange}/>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

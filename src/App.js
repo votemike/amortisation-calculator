@@ -3,7 +3,6 @@ import Calculator from './Calculator';
 import './App.scss';
 
 function App() {
-  //@TODO move all the static text in to public/index.html
   return (
     <>
       <div className="main">
