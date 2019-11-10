@@ -65,19 +65,19 @@ class Calculator extends React.Component {
       <>
         <div className="calculator">
           <div className="results">
-            <table>
-              <thead>
-              <tr>
-                <th>Year</th>
-                <th>Mortgage remaining</th>
-                <th>Value Owned</th>
-                <th>Interest Paid To Date</th>
-                <th>Total Paid</th>
-                <th>% Owned</th>
-              </tr>
-              </thead>
-              {this.renderTableBody()}
-            </table>
+            {/*<table>*/}
+            {/*  <thead>*/}
+            {/*  <tr>*/}
+            {/*    <th>Year</th>*/}
+            {/*    <th>Mortgage remaining</th>*/}
+            {/*    <th>Value Owned</th>*/}
+            {/*    <th>Interest Paid To Date</th>*/}
+            {/*    <th>Total Paid</th>*/}
+            {/*    <th>% Owned</th>*/}
+            {/*  </tr>*/}
+            {/*  </thead>*/}
+            {/*  {this.renderTableBody()}*/}
+            {/*</table>*/}
           </div>
           <div className="details">
             <h2>Your Details</h2>
