@@ -1,8 +1,8 @@
-$mainColour: #D8D8D8;
+@import 'variables';
 
 .calculator {
   align-items: stretch;
-  border: 1px solid $mainColour;
+  border: 1px solid $appColour;
   display: flex;
   margin: 0 auto;
   max-width: 800px;
@@ -23,7 +23,7 @@ $mainColour: #D8D8D8;
 
       td,
       th {
-        border: 1px solid $mainColour;
+        border: 1px solid $appColour;
         padding: 8px;
 
         &:first-child {
@@ -82,7 +82,7 @@ $mainColour: #D8D8D8;
     flex-flow: column;
 
     .details {
-      border-bottom: 1px solid $mainColour;
+      border-bottom: 1px solid $appColour;
       order: 1;
       width: 100%;
     }

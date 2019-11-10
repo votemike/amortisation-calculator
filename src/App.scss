@@ -1,21 +1,11 @@
-$footerHeight: 88px;
-$mainColour: #D8D8D8; // How do I import this in to multiple SCSS files?
-html {
-  min-height: 100%;
-  position: relative;
-}
-
-body {
-  height: 100%;
-  padding-bottom: $footerHeight+10px;
-}
+@import 'variables';
 
 .main {
   margin: 10px 10px 0 10px;
 }
 
 h2 {
-  border-bottom: 1px solid $mainColour;
+  border-bottom: 1px solid $appColour;
 }
 
 footer {
@@ -33,7 +23,6 @@ header,
   margin: 0 auto;
   max-width: 800px;
 }
-
 
 .assumptions {
   margin-top: 10px;

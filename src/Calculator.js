@@ -32,10 +32,10 @@ class Calculator extends React.Component {
   }
 
   renderRows() {
-    const rows = this.getPaymentRows();
-    const newRows = [];
-    for (const [index, value] of rows.entries()) {
-      newRows.push(
+    const paymentRows = this.getPaymentRows();
+    const rows = [];
+    for (const [index, value] of paymentRows.entries()) {
+      rows.push(
         <tr key={index}>
           <td>{index + 1}</td>
           <td className="numeric">{value.balance.toFixed(2)}</td>
@@ -47,7 +47,7 @@ class Calculator extends React.Component {
       );
     }
 
-    return newRows;
+    return rows;
   }
 
   renderResults() {
@@ -84,19 +84,19 @@ class Calculator extends React.Component {
           <h2>Your Details</h2>
           <div>
             <label htmlFor="value">Home Value</label>
-            <input name="value" type="number" min="0" onChange={this.handleInputChange}/>
+            <input type="number" min="0" onChange={this.handleInputChange} name="value" />
           </div>
           <div>
             <label htmlFor="rate">Interest Rate</label>
-            <input name="rate" type="number" min="0" onChange={this.handleInputChange}/>
+            <input type="number" min="0" onChange={this.handleInputChange} name="rate"/>
           </div>
           <div>
             <label htmlFor="mortgage">Mortgage Amount</label>
-            <input name="mortgage" type="number" min="0" onChange={this.handleInputChange}/>
+            <input type="number" min="0" onChange={this.handleInputChange} name="mortgage"/>
           </div>
           <div>
             <label htmlFor="term">Mortgage Term</label>
-            <input name="term" type="number" min="0" step="12" onChange={this.handleInputChange}/>
+            <input type="number" min="0" onChange={this.handleInputChange} name="term" step="12"/>
           </div>
         </div>
       </div>
