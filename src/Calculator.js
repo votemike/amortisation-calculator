@@ -42,7 +42,7 @@ class Calculator extends React.Component {
           <td className="numeric">{(this.state.value - value.balance).toFixed(2)}</td>
           <td className="numeric">{value.totalInterest.toFixed(2)}</td>
           <td className="numeric">{value.totalPayments.toFixed(2)}</td>
-          <td className="numeric">{(100 * (this.state.value - value.balance) / this.state.value).toFixed(2)}</td>
+          <td className="numeric">{(100 * (this.state.value - value.balance) / this.state.value).toFixed(0)}</td>
         </tr>
       );
     }
@@ -63,7 +63,7 @@ class Calculator extends React.Component {
           <th>Mortgage remaining</th>
           <th>Value Owned</th>
           <th>Interest Paid To Date</th>
-          <th>Total Paid</th>
+          <th>Payments Total</th>
           <th>% Owned</th>
         </tr>
         </thead>

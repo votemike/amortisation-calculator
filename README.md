@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## TODO
+Lazy-Load mortgage-js once it's time to actually do some calculations.
+
 ## Available Scripts
 
 In the project directory, you can run:
