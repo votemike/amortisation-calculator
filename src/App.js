@@ -23,7 +23,7 @@ function App() {
         </div>
       </div>
       <footer>
-        <p>Created by <a href="https://www.votemike.co.uk">Michael Gwynne</a></p>
+        <p>Created by <a href="https://votemike.co.uk">Michael Gwynne</a></p>
         <p>You may like <a href="https://votemike.github.io/stress-test/">property stress test</a></p>
       </footer>
     </>
